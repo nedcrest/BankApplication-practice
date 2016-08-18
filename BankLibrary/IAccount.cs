@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 
 namespace BankLibrary
 {
-    interface IAccount
+    public interface IAccount
     {
+        void Put(decimal sum);
+        decimal Withdraw(decimal sum);
     }
 }
