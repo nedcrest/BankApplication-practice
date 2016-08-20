@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BankLibrary
 {
-    public abstract class Account //: IAccount
+    public abstract class Account : IAccount
     {
         // event when money withdrawed
         protected internal event AccountStateHandler Withdrawed;
@@ -50,7 +50,7 @@ namespace BankLibrary
             get { return _id; }
         }
 
-        // call far events
+        // call for events
         private void CallEvent(AccountEventsArgs e, AccountStateHandler handler)
         {
             if (handler == null && e == null)
@@ -80,6 +80,53 @@ namespace BankLibrary
         protected virtual void OnCalculated(AccountEventsArgs e)
         {
             CallEvent(e, Calculated);
+        }
+
+        public virtual void Put(decimal sum)
+        {
+            _sum += sum;
+            OnAdded(new AccountEventsArgs("You received " + sum + " on your account", sum));
+        }
+
+        public virtual decimal Withdraw(decimal sum)
+        {
+            decimal result = 0;
+            if(sum <= _sum)
+            {
+                _sum -= sum;
+                result = sum;
+                OnWithdrawed(new AccountEventsArgs("Sum of " + sum + " withdrawed from account ID: " + _id, sum));
+            }
+            else
+            {
+                OnWithdrawed(new AccountEventsArgs("Not enough money on your account ID: " + _id, sum));
+            }
+            return result;
+        }
+
+        //open new account
+        protected internal virtual void Open()
+        {
+            OnOpened(new AccountEventsArgs("New debet account created! Account ID: " + this._id, this._sum));
+        }
+        
+        //close account
+        protected internal virtual void Close()
+        {
+            OnClosed(new AccountEventsArgs("Account ID " + _id + " was closed. Total sum.: " + CurrentSum, CurrentSum));
+        }
+
+        protected internal void IncrementDays()
+        {
+            _days++;
+        }
+
+        //adding percents to your sum
+        protected internal virtual void Calculate()
+        {
+            decimal increment = _sum * _percentage / 100;
+            _sum = _sum + increment;
+            OnCalculated(new AccountEventsArgs("Percents were added: " + increment, increment));
         }
     }
 }
