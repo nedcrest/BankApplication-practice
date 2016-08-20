@@ -42,6 +42,7 @@
   <ItemGroup>
     <Compile Include="Account.cs" />
     <Compile Include="AccountStateHandler.cs" />
+    <Compile Include="Bank.cs" />
     <Compile Include="Class1.cs" />
     <Compile Include="DemandAccount.cs" />
     <Compile Include="DepositAccount.cs" />
