@@ -1,0 +1,5 @@
+C:\Users\Dima\Documents\GitHub\BankApplication-practice\BankLibrary\bin\Debug\BankLibrary.dll
+C:\Users\Dima\Documents\GitHub\BankApplication-practice\BankLibrary\bin\Debug\BankLibrary.pdb
+C:\Users\Dima\Documents\GitHub\BankApplication-practice\BankLibrary\obj\Debug\BankLibrary.csprojResolveAssemblyReference.cache
+C:\Users\Dima\Documents\GitHub\BankApplication-practice\BankLibrary\obj\Debug\BankLibrary.dll
+C:\Users\Dima\Documents\GitHub\BankApplication-practice\BankLibrary\obj\Debug\BankLibrary.pdb
